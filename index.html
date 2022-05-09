@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	<title>Escapee</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+		<body>
+		<div class="container">
+		<div id="text">Welcome to the room. Can you escape? Try clicking around.</div>
+		</div>
+			<div id="room">
+			    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<p id="timer"></p>
+				<image id="shelf" src="images/bookshelf.png"/>
+				<image id="tree" src="images/bonsai.png" onclick="tryBurn()" />
+				<image id="treeFire" src="images/bonsaiFire.png">
+				<image id="book1" src="images/book1.png"  onclick="examine()"/>
+				<image id="sym1" class="symbol" src="symbols/sprite10.png"/>
+				<image id="book2" src="images/book2.png" onclick="examine()"/>
+				<image id="sym2" class="symbol" src="symbols/sprite8.png"/>
+				<image id="book3" src="images/book3.png" onclick="examine()"/>
+				<image id="sym3" class="symbol" src="symbols/sprite6.png"/>
+				<image id="book4" src="images/book1.png" onclick="examine()"/>
+				<image id="sym4" class="symbol" src="symbols/sprite4.png"/>
+				<image id="book5" src="images/book2.png" onclick="examine()"/>
+				<image id="sym5" class="symbol" src="symbols/sprite2.png"/>
+				
+				<image id="drawer" src="images/drawer.png"/>
+				<image id="drawerOpen" src="images/drawerOpen.png"/>
+				<image id="lever" src="images/lever.png" onclick="openDrawer"/>
+				
+				<image id="lighter" src="images/lighter.png" onclick="collectLighter"/>
+				<image id="invLighter" src="images/lighter.png"/> 
+				
+				<image id="glass" src="images/magGlass.png" onclick="collectMagGlass"/>
+				<image id="invGlass" src="images/magGlass.png"/>
+				
+				<image id="inventory" src="images/inventory.png"/>
+				
+				
+	<script src="timer.js"></script>			
+				
+			</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $(".classname").hide();
+  });
+</script>
+			<script>
+let clicks = 0; 
+let puzzlePhase = [];
+const textElement = document.getElementById('text')
+
+
+			var hasLighter = false;
+			var hasMagGlass = false; 
+			var drawerClosed = true;
+			var sym1vis, sym2vis, sym3vis, sym4vis, sym5vis = false;
+			let bookOrder = [];
+			
+			document.getElementById('tree').onclick = function tryBurn() {
+			if (hasLighter == true) {
+				document.getElementById("tree").style.visibility = "hidden";
+				document.getElementById("treeFire").style.visibility = "visible";
+				textElement.innerText =("You burned the beautiful bonsai tree. Looks like there was something in it.");
+				document.getElementById('glass').style.visibility = "visible";
+				document.getElementById('treeFire').style.opacity = '0';
+				puzzlePhase[1] = "Tree burned."
+			} else {
+				textElement.innerText = ("This beautiful bonsai tree looks quite dry.");
+			}
+			}
+			
+			document.getElementById('book1').onclick = function examine() {
+				textElement.innerText =("The book1 is marked with a small symbol. It is impossible to discern with the naked eye.");
+				if (hasMagGlass == true) {
+					textElement.innerText=("You can see the small symbol on the book.");
+					document.getElementById('sym1').style.visibility = "visible";
+					sym1vis = true;
+						if (sym1vis ==true && sym2vis == true && sym3vis == true && sym4vis == true && sym5vis == true) {
+						textElement.innerText=("Click the books in the right order.");
+						puzzlePhase[3] = "Book Order Started."
+						bookOrder.push(1); console.log("1");
+												if (bookOrder[0] == 1 && bookOrder[1] == 2 && bookOrder[2] == 3 && bookOrder[3] == 4 && bookOrder[4] == 5){
+							textElement.innerText=("Looks like you've solved the book puzzle. It took you " + (300 - time) + " seconds.");
+					} else if(bookOrder.length >= 5) {
+						textElement.innerText=("Wrong Order!");
+						time = time - 45;
+						bookOrder=[];
+					}
+					}
+				}
+			}
+			document.getElementById('book2').onclick = function examine() {
+				textElement.innerText =("The book2 is marked with a small symbol. It is impossible to discern with the naked eye.");
+				if (hasMagGlass == true) {
+					textElement.innerText=("You can see the small symbol on the book.");
+					document.getElementById('sym2').style.visibility = "visible";
+					sym2vis = true;
+						if (sym1vis ==true && sym2vis == true && sym3vis == true && sym4vis == true && sym5vis == true) {
+						textElement.innerText=("Click the books in the right order.");
+						puzzlePhase[3] = "Book Order Started."
+						bookOrder.push(2);console.log("2");
+												if (bookOrder[0] == 1 && bookOrder[1] == 2 && bookOrder[2] == 3 && bookOrder[3] == 4 && bookOrder[4] == 5){
+							textElement.innerText=("Looks like you've solved the book puzzle. It took you " + (300 - time) + " seconds.");
+					} else if(bookOrder.length >= 5) {
+						textElement.innerText=("Wrong Order!");
+						time = time - 45;
+						bookOrder=[];
+					}
+					}
+				}
+			}
+			document.getElementById('book3').onclick = function examine() {
+				textElement.innerText =("The book3 is marked with a small symbol. It is impossible to discern with the naked eye.");
+				if (hasMagGlass == true) {
+					textElement.innerText=("You can see the small symbol on the book.");
+					document.getElementById('sym3').style.visibility = "visible";
+					sym3vis = true;
+						if (sym1vis ==true && sym2vis == true && sym3vis == true && sym4vis == true && sym5vis == true) {
+						textElement.innerText=("Click the books in the right order.");
+						puzzlePhase[3] = "Book Order Started."
+						bookOrder.push(3);console.log("3");
+												if (bookOrder[0] == 1 && bookOrder[1] == 2 && bookOrder[2] == 3 && bookOrder[3] == 4 && bookOrder[4] == 5){
+							textElement.innerText=("Looks like you've solved the book puzzle. It took you " + (300 - time) + " seconds.");
+					} else if(bookOrder.length >= 5) {
+						textElement.innerText=("Wrong Order!");
+						time = time - 45;
+						bookOrder=[];
+					}
+					}
+				}
+			}
+			document.getElementById('book4').onclick = function examine() {
+				textElement.innerText =("The book4 is marked with a small symbol. It is impossible to discern with the naked eye.");
+				if (hasMagGlass == true) {
+					textElement.innerText=("You can see the small symbol on the book.");
+					document.getElementById('sym4').style.visibility = "visible";
+					sym4vis = true;
+						if (sym1vis ==true && sym2vis == true && sym3vis == true && sym4vis == true && sym5vis == true) {
+						textElement.innerText=("Click the books in the right order.");
+						puzzlePhase[3] = "Book Order Started."
+						bookOrder.push(4);console.log("4");
+												if (bookOrder[0] == 1 && bookOrder[1] == 2 && bookOrder[2] == 3 && bookOrder[3] == 4 && bookOrder[4] == 5){
+							textElement.innerText=("Looks like you've solved the book puzzle. It took you " + (300 - time) + " seconds.");
+					} else if(bookOrder.length >= 5) {
+						textElement.innerText=("Wrong Order!");
+						time = time - 45;
+						bookOrder=[];
+					}
+					}
+				}
+			}
+			document.getElementById('book5').onclick = function examine() {
+				textElement.innerText =("The book5 is marked with a small symbol. It is impossible to discern with the naked eye.");
+				if (hasMagGlass == true) {
+					textElement.innerText=("You can see the small symbol on the book.");
+					document.getElementById('sym5').style.visibility = "visible";
+					sym5vis = true;
+					if (sym1vis ==true && sym2vis == true && sym3vis == true && sym4vis == true && sym5vis == true) {
+						textElement.innerText=("Click the books in the right order.");
+						puzzlePhase[3] = "Book Order Started."
+						bookOrder.push(5);console.log("5");
+						if (bookOrder[0] == 1 && bookOrder[1] == 2 && bookOrder[2] == 3 && bookOrder[3] == 4 && bookOrder[4] == 5){
+							textElement.innerText=("Looks like you've solved the book puzzle. It took you " + (300 - time) + " seconds.");
+					} else if(bookOrder.length >= 5) {
+						textElement.innerText=("Wrong Order!");
+						time = time - 45;
+						bookOrder=[];
+					}
+					
+				}
+			}
+			}
+			
+			
+			document.getElementById('lever').onclick = function openDrawer() {
+			
+			if (drawerClosed == true) {
+			textElement.innerText =("You pulled the lever. Sounds like something opened.");
+				document.getElementById('drawer').style.visibility = "hidden";
+				document.getElementById('drawerOpen').style.visibility = "visible";
+				document.getElementById('lighter').style.visibility = "visible";
+				drawerClosed = false;
+			} else {
+			textElement.innerText =("You pulled the lever. Sounds like something closed.");
+				document.getElementById("drawerOpen").style.visibility = "hidden";
+				document.getElementById("drawer").style.visibility = "visible"; 
+				if (hasLighter == false) {
+					document.getElementById("lighter").style.visibility = "hidden";
+				}
+				drawerClosed = true;
+			}
+			}
+			
+			
+			document.getElementById('lighter').onclick = function collectLighter() {
+			console.log("You collect the lighter.");
+			hasLighter = true;
+			document.getElementById('lighter').style.display = "none";
+			textElement.innerText =("You picked up a warm lighter. Could be useful."); 
+			document.getElementById('invLighter').style.visibility = "visible";
+			puzzlePhase[0] = "Lighter collected.";
+			}
+			
+			
+			document.getElementById('glass').onclick = function collectMagGlass() {
+			console.log("You collect the magnifying glass.");
+			hasMagGlass = true;
+			textElement.innerText =("You picked up a magnifying glass. You can look closer at things, now.");
+			document.getElementById('glass').style.visibility = "hidden";
+			document.getElementById('invGlass').style.visibility = "visible";
+			}
+			
+			addEventListener('click', function() {
+			clicks = clicks + 1;
+			console.log(clicks + " clicks."); 
+			} )
+					
+			</script>
+		</body>
+			
+</html>
