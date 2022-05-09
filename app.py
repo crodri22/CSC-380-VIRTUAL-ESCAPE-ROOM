@@ -14,6 +14,8 @@ def home():
     Answers = question1[2]
     PossibleChoices = question1[3].split(',')
     if request.method == 'POST':
+        jsdata = request.form['javascript_data']
+        print(jsdata)
         name = request.form
         result2=name.to_dict(flat=False)
         for key,value in result2.items():

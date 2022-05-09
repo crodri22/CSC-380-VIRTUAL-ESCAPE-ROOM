@@ -3,9 +3,12 @@
 <head>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='mystyle.css') }}">
 <title>Page Title</title>
-</head>
-<body>
 
+</head>
+<body style="background-image: url({{ url_for('static', filename='image.jpg') }});
+background-repeat: no-repeat;
+background-size: cover;">
+<p id ="demo"></p>
 <p class='heading'>Question #</p>
 <div id="card">
 <p id='question'>{{content}}</p>
@@ -28,10 +31,13 @@
     <input type="radio" name="radio" value="4">
     <span class="checkmark"></span>
 </label> 
-<div class="button1">
-    <button type="submit">Submit</button>
-</div>
+    <button id = "button1" type="submit">Submit</button>
 </form>
-  
+
+<p id="timer"></p>
+
+
+
+  <script src="{{ url_for('static', filename='Timer.js')}}"></script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scaling">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href= "{{ url_for('static',filename='Timer.css') }}">
+
+    <h1 class=center>Escapé</h1>
+  </head>
+  <body>
+
+
+    <p id="timer"></p>
+
+
+    <!-- <table class="center"; border="1">
+        <tr>
+           <th>Question</th>
+           <th>Correct Answer</th>
+           <th>Input</th>
+           <th>IsCorrect</th>
+        </tr>
+        <tr>
+           <td>Who was the first President of U.S.A.? </td>
+           <td>George Washington</td>
+           <td>--</td>
+           <td id = "t4"></td>
+        </tr>
+
+        <tr>
+           <td>Which was the first country to reach space?</td>
+           <td>Russia</td>
+           <td>--</td>
+           <td>--</td>
+        </tr>
+
+     </table> -->
+
+  <script src="{{ url_for('static', filename='admin.js')}}"></script>
+  </body>
+</html>

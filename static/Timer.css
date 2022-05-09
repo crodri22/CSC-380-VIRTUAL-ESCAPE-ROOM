@@ -1,0 +1,32 @@
+body {
+  background-color: white;
+  margin: 0;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+p {
+  background-color: white;
+  display: inline-inline-flex;
+  align-items:center;
+  justify-content: center;
+  margin: 0;
+  font-size: 50px;
+  height: 70px;
+  width: 125px;
+  border: solid black;
+}
+h1 {
+  background-color: white;
+  display: inline-inline-flex;
+  align-items:center;
+  justify-content: center;
+  margin: 0;
+  font-size: 50px;
+  height: 70px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
