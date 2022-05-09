@@ -37,11 +37,11 @@ background-size: cover;">
 
 <p id="timer"></p>
 
-<p id = "times" value = 5></p>
+<p id="times">{{tr}}</p>
 
 
   <script >//timer code
-    let time =  20;
+    let time =  parseInt(document.getElementById('times').innerHTML);
     const timer = document.getElementById('timer');
     
     setInterval(Countdown, 1000);

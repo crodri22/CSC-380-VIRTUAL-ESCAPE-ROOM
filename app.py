@@ -8,6 +8,7 @@ def loseScreen():
 
 @app.route("/", methods = ['POST', 'GET'])
 def home():
+    time = 20
     con = sql.connect("Question.db")
     cur = con.cursor()
     cur.execute("select * from question")
@@ -25,13 +26,16 @@ def home():
         if PossibleChoices[result -1] == Answers:
             print("Correct")
             return redirect(url_for('home1'))
+        else:
+            time = time - 10
 
     return render_template('Questions.html', ans1 = PossibleChoices[0],
                                              ans2 = PossibleChoices[1],
                                              ans3 = PossibleChoices[2],
                                              ans4 = PossibleChoices[3],
                                              content = content,
-                                             url = 'http://localhost:5000/')
+                                             url = 'http://localhost:5000/',
+                                             tr = time)
 
 
 @app.route("/q2", methods = ['POST', 'GET'])
