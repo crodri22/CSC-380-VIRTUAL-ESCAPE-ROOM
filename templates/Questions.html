@@ -3,15 +3,18 @@
 <head>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='mystyle.css') }}">
 <title>Page Title</title>
-</head>
-<body>
 
+</head>
+<body style="background-image: url({{ url_for('static', filename='image.jpg') }});
+background-repeat: no-repeat;
+background-size: cover;">
+<p id ="demo"></p>
 <p class='heading'>Question #</p>
 <div id="card">
 <p id='question'>{{content}}</p>
 </div>
 
-<form id-"form" action = "{{url}}" method = "POST">
+<form id="form" action = "{{url}}" method = "POST">
 <label class="container">{{ans1}}
     <input type="radio" checked="checked" name="radio" value="1">
     <span class="checkmark"></span>
@@ -28,10 +31,39 @@
     <input type="radio" name="radio" value="4">
     <span class="checkmark"></span>
 </label> 
-<div class="button1">
-    <button type="submit">Submit</button>
-</div>
+    <button id = "button1" type="submit">Submit</button>
 </form>
-  
+
+
+<p id="timer"></p>
+
+<p id = "times" value = 5></p>
+
+
+  <script >//timer code
+    let time =  20;
+    const timer = document.getElementById('timer');
+    
+    setInterval(Countdown, 1000);
+    
+    function Countdown() {
+      const min = Math.floor(time / 60);
+      let sec = time % 60;
+    
+      if (sec > 9) {
+      timer.innerHTML = min + ":" + sec;
+    }
+    else if (sec <= 9) {timer.innerHTML = min + ":" + "0" + sec;}
+    
+    if (time > 0) {
+      time--;
+    }
+    else {
+      timer.style.color = "red";
+      location.href = "/uLost";
+    }
+    }
+    
+  </script>
 </body>
 </html>
