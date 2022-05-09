@@ -14,7 +14,7 @@ background-size: cover;">
 <p id='question'>{{content}}</p>
 </div>
 
-<form id-"form" action = "{{url}}" method = "POST">
+<form id="form" action = "{{url}}" method = "POST">
 <label class="container">{{ans1}}
     <input type="radio" checked="checked" name="radio" value="1">
     <span class="checkmark"></span>
@@ -34,10 +34,36 @@ background-size: cover;">
     <button id = "button1" type="submit">Submit</button>
 </form>
 
+
 <p id="timer"></p>
 
+<p id = "times" value = 5></p>
 
 
-  <script src="{{ url_for('static', filename='Timer.js')}}"></script>
+  <script >//timer code
+    let time =  document.getElementById('times').;
+    const timer = document.getElementById('timer');
+    
+    setInterval(Countdown, 1000);
+    
+    function Countdown() {
+      const min = Math.floor(time / 60);
+      let sec = time % 60;
+    
+      if (sec > 9) {
+      timer.innerHTML = min + ":" + sec;
+    }
+    else if (sec <= 9) {timer.innerHTML = min + ":" + "0" + sec;}
+    
+    if (time > 0) {
+      time--;
+    }
+    else {
+      timer.style.color = "red";
+      location.href = "/uLost";
+    }
+    }
+    
+  </script>
 </body>
 </html>

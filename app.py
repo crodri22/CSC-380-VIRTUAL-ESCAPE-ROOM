@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3 as sql
 app = Flask("__Start__")
 
+@app.route("/uLost", methods = ['POST', 'GET'])
+def loseScreen():
+    return render_template('LostScreen.html')
 
 @app.route("/", methods = ['POST', 'GET'])
 def home():
@@ -14,8 +17,6 @@ def home():
     Answers = question1[2]
     PossibleChoices = question1[3].split(',')
     if request.method == 'POST':
-        jsdata = request.form['javascript_data']
-        print(jsdata)
         name = request.form
         result2=name.to_dict(flat=False)
         for key,value in result2.items():

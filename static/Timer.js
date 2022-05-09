@@ -1,6 +1,5 @@
 //timer code
-let time = 4;
-
+let time = 30;
 const timer = document.getElementById('timer');
 
 setInterval(Countdown, 1000);
@@ -19,8 +18,7 @@ if (time > 0) {
 }
 else {
   timer.style.color = "red";
-  $.post( "'http://localhost:5000/", {
-    javascript_data: time
-});
+  location.href = "/uLost";
 }
 }
+
