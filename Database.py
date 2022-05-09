@@ -8,7 +8,7 @@ print(len(rows))
 for x in rows:
     print(x[0])
 """
-
+"""
 Id = '123B9'
 Content = 'What can run, but never walks; has a mouth, but never talks; has a head, but never weeps; has a bed, but never sleeps?'
 Ans = 'River'
@@ -23,3 +23,4 @@ conn.execute("""INSERT INTO Question(ID, CONTENT, ANSWER, POSSIBLE_ANSWER, HINT)
 
 conn.commit()
 conn.close()
+""""
